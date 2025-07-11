@@ -104,4 +104,17 @@ function adminLogin(e) {
     alert('비밀번호가 올바르지 않습니다.');
   }
 }
-window.adminLogin = adminLogin; 
+window.adminLogin = adminLogin;
+
+// 모바일에서 네비게이션 '수업프로그램' -> '수업'으로 변경
+function updateNavClassText() {
+  const classLink = document.querySelector('.nav-class-link');
+  if (!classLink) return;
+  if (window.innerWidth <= 600) {
+    classLink.textContent = '수업';
+  } else {
+    classLink.textContent = '수업프로그램';
+  }
+}
+window.addEventListener('resize', updateNavClassText);
+document.addEventListener('DOMContentLoaded', updateNavClassText); 
